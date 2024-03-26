@@ -1,10 +1,7 @@
-import { ContainerView, ButtonView } from 'overture/views';
-
 const MenuBarView = ContainerView.extend({
     className: 'menu-bar',
     layout: { direction: 'horizontal' },
     childViews: function () {
-        // Here "this.get('target')" will refer to the target passed in the parent view
         return [
             new ButtonView({
                 value: 'Upload',
@@ -15,6 +12,16 @@ const MenuBarView = ContainerView.extend({
                 value: 'Balance Sheet',
                 target: this.get('target'),
                 method: 'showBalanceSheet',
+            }),
+            new ButtonView({
+                value: 'Sign In',
+                target: this.get('target'),
+                method: 'signIn', 
+            }),
+            new ButtonView({
+                value: 'Sign Out',
+                target: this.get('target'),
+                method: 'signOut', 
             }),
             // ... other buttons
         ];
