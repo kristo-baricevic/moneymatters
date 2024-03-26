@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Company {
+  id                Int                 @id @default(autoincrement())
+  name              String
+  BalanceSheets     BalanceSheet[]
+  CashFlowStatements CashFlowStatement[]
+  IncomeStatements  IncomeStatement[]
+
+  @@unique([name])
+}
+
+
+model BalanceSheet {
+  id                Int      @id @default(autoincrement())
+  date              DateTime
+  assets            Float
+  liabilities       Float
+  equity            Float
+  companyID         Int
+  Company           Company  @relation(fields: [companyID], references: [id])
+
+  @@unique([date, companyID])
+}
+
+model CashFlowStatement {
+  id                  Int      @id @default(autoincrement())
+  date                DateTime
+  operatingActivities Float
+  investingActivities Float
+  financingActivities Float
+  netIncreaseInCash   Float
+  cashAtBeginning     Float
+  cashAtEnd           Float
+  companyID           Int
+  Company             Company  @relation(fields: [companyID], references: [id])
+
+  @@unique([date, companyID])
+}
+
+model IncomeStatement {
+  id          Int      @id @default(autoincrement())
+  date        DateTime
+  revenue     Float
+  costOfGoodsSold Float
+  grossProfit Float
+  operatingExpenses Float
+  netIncome   Float
+  companyID   Int
+  Company     Company  @relation(fields: [companyID], references: [id])
+
+  @@unique([date, companyID])
+}
+
