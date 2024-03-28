@@ -1,10 +1,15 @@
+
 import MenuBarView from './MenuBarView';
 import ContentView from './ContentView';
 import ActionButtonView from './ActionButtonView';
 
-const App = new O.Application({
+const AppView = new O.Application({
     init: function () {
         this._super();
+        const container = document.getElementById('action-buttons-container');
+        const actionButtonView = new ActionButtonView({
+            target: this,
+        });
 
         this.set('mainView', new O.ContainerView({
             childViews: [
@@ -33,3 +38,5 @@ const App = new O.Application({
         // Code to save the statement
     },
 });
+
+export default AppView;
