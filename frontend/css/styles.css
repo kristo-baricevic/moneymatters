@@ -1,0 +1,11 @@
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-image: 
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="1.5" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>'),
+      linear-gradient(to bottom, rgba(125, 192, 181, 0.5), rgb(109, 220, 201));
+    background-size: cover;
+    background-blend-mode: overlay;
+  }
+  
