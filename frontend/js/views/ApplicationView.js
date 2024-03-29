@@ -24,27 +24,27 @@ const AppView = Class({
             new TextView({
                 positioning: 'absolute',
                 className: 'v-App-title',
-                value: 'welcome',
+                value: 'Money Money Money!',
             }),
             new ToolbarView({
                 left: [
                     new ButtonView({
-                        value: 'Upload',
+                        label: 'Upload',
                         target: this.get('target'),
                         method: 'upload',
                     }),
                     new ButtonView({
-                        value: 'Balance Sheet',
+                        label: 'Balance Sheet',
                         target: this.get('target'),
                         method: 'showBalanceSheet',
                     }),
                     new ButtonView({
-                        value: 'Sign In',
+                        label: 'Sign In',
                         target: this.get('target'),
                         method:'signIn',
                     }),
                     new ButtonView({
-                        value: 'Sign Out',
+                        label: 'Sign Out',
                         target: this.get('target'),
                         method:'signOut',
                     }),
@@ -63,17 +63,15 @@ const AppView = Class({
             }),
             new View({
                 className: 'v-App-content',
-                childViews: [
-                    new MenuBarView({
-                        target: this.get('target'),
-                    }),
-                    new ContentView({
-                        target: this.get('target'),
-                    }),
-                    new ActionButtonView({
-                        target: this.get('target'),
-                    }),
-                ],
+                draw(/* layer */) {
+                    return [
+                        new ListView({
+                            content: bind(state, 'line items'),
+                            ItemView: TransactionView,
+                            itemHeight: 48,
+                        }),
+                    ];
+                },
             })
         ]
     },

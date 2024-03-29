@@ -1,4 +1,3 @@
-// main.js
 import '/overture/Global';
 import { classes } from '/overture/core';
 import { el } from '/overture/dom';
@@ -15,7 +14,6 @@ import {
 
 import './fixtures';
 import './locale';
-import { Application } from 'overture/core';
 import AppView from './views/ApplicationView';
 
 // Start the application

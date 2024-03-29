@@ -9,3 +9,32 @@ body {
     background-blend-mode: overlay;
   }
   
+  .v-App {
+    margin: 110px auto 10px;
+    min-height: 429px;
+    max-width: 500px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(128, 128, 128, 0.7);
+}
+
+.v-App:before {
+    content: '';
+    position: absolute;
+    top: 45px;
+    left: 49px;
+    bottom: 0;
+    border: solid #f5d6d6;
+    border-width: 0 1px;
+    width: 2px;
+}
+
+.v-App-title {
+    top: -80px;
+    left: 0;
+    right: 0;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 70px;
+    text-align: center;
+    text-shadow: -1px -1px rgba(0, 0, 0, 0.2);
+}
